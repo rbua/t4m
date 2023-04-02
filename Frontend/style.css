@@ -1,0 +1,35 @@
+/* Styles for the main window */
+#main-window {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 33%;
+	width: 95%;
+	background-color: #f2f2f2;
+	overflow-y: scroll;
+	padding: 10px;
+}
+
+/* Styles for the small window */
+#small-window {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 100px;
+	width: 200px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	display: none;
+	padding: 10px;
+}
+
+/* Styles for the 'x' button */
+.close-btn {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+}

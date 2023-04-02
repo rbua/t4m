@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="MongoDB.Bson" Version="2.19.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.19.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="DTOs\" />
+    <None Remove="Services\" />
+    <None Remove="Repository\" />
+    <None Remove="Models\" />
+    <None Remove="Models\DbModels\" />
+    <None Remove="Providers\" />
+    <None Remove="Models\Configuration\" />
+    <None Remove="Providers\FileSystemProviders\" />
+    <None Remove="Helpers\" />
+    <None Remove="DTOs\TranslationInfoDTOs\" />
+    <None Remove="Providers\DateTimeProviders\" />
+    <None Remove="AutoMapper" />
+    <None Remove="MongoDB.Bson" />
+    <None Remove="MongoDB.Driver" />
+    <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+    <Folder Include="Services\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\DbModels\" />
+    <Folder Include="Providers\" />
+    <Folder Include="Models\Configuration\" />
+    <Folder Include="Providers\FileSystemProviders\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="DTOs\TranslationInfoDTOs\" />
+    <Folder Include="Providers\DateTimeProviders\" />
+  </ItemGroup>
+</Project>
