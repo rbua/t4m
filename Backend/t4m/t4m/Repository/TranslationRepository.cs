@@ -10,6 +10,7 @@ using t4m.Helpers;
 using t4m.Models;
 using t4m.Models.DbModels;
 using t4m.Providers.PronunciationData.DateTimeProviders;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace t4m.Repository;
 
@@ -77,6 +78,16 @@ public class TranslationRepository : ITranslationRepository
         Guid? pronunciationId,
         TextTranslationModel translation)
     {
+        var alreadyCachedTranslations = await _cachedTranslationCollection.Find(x => x.FromLanguage == fromLanguage &&
+            x.ToLanguage == toLanguage &&
+            x.TextTranslation.Text == translation.Translation)
+            .ToListAsync();
+
+        if(alreadyCachedTranslations.Any())
+        {
+            return;
+        }
+
         var cachedTranslation = new CachedTranslation
         {
             CreatedAt = _dateTimeProvider.Now,

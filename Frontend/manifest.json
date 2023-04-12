@@ -1,0 +1,40 @@
+{
+  "name": "t4m",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "A handy tool for translation",
+  "icons": {
+    "16": "icons/fav16.png",
+    "48": "icons/fav48.png",
+    "128": "icons/fav128.png"
+  },
+  "action":{
+    "default_popup": "index.html",
+    "default_title": "t4m"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["popup_div.html"],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "resources": ["popup_styles.css"],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "resources": ["icons/close-red-icon.png"],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "resources": ["icons/icon-transparent.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

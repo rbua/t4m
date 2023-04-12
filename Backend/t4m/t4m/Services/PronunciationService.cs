@@ -61,7 +61,7 @@ public class PronunciationService : IPronunciationService
 
         if (audioData?.Audio == null)
         {
-            throw new ApplicationException($"{nameof(audioData.Audio)} or {nameof(audioData.Audio)} were null");
+            throw new ApplicationException($"{nameof(audioData.Audio)} were null");
         }
 
         pronunciation.AudioData = NumericTypesHelper.ConvertArray(audioData.Audio);

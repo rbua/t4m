@@ -96,7 +96,7 @@ public class TranslationService : ITranslationService
             Info = _mapper.Map<TranslationResponseInfoDTO>(textTranslationModel)
         };
 
-        if (pronunciation == null)
+        if (pronunciation != null)
         {
             pronunciationDto = _mapper.Map<PronunciationDto>(pronunciation);
         }

@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Translate Text</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+  <title>Translate Page</title>
 </head>
 <body>
-	<div id="main-window">
-		<p ondblclick="showTranslation(event)">Double-click on a word to translate it.</p>
-	</div>
-	
-	<div id="small-window">
-		<span class="close-btn" onclick="closeTranslation()">x</span>
-		<p id="translated-text"></p>
-	</div>
-	
-	<script src="script.js"></script>
+  <h1>Translation</h1>
+  <label for="inputText">Enter Text:</label>
+  <input type="text" id="inputText" name="inputText"><br><br>
+  <button type="button" id="translateButton">OK</button><br><br>
+  <div id="result"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>

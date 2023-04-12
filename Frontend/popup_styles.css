@@ -1,0 +1,13 @@
+#logo {
+    background-image: url("icons/close-red-icon.png");
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+  }
+  
+#close-button {
+    background-image: url("icons/close-red-icon.png");
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+  }

@@ -26,8 +26,10 @@ public class MappingProfile : Profile
         CreateMap<ExtraTranslationModel, ExtraTranslationDTO>();
 
         CreateMap<PronunciationDto, PronunciationModel>()
+            .ForMember(dest => dest.CacheRecordId, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.AudioData, opt => opt.MapFrom(src => src.Audio));
         CreateMap<PronunciationModel, PronunciationDto>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.CacheRecordId))
             .ForMember(dest => dest.Audio, opt => opt.MapFrom(src => src.AudioData));
 
         CreateMap<TranslationDTO, TranslationModel>();
