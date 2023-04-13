@@ -26,7 +26,43 @@ function translate_input_on_page(inputText) {
 	});
   }
 
+function close_popup_window() {
+    const popupWindow = document.querySelector('#popup_translator_window');
+    popupWindow.remove();
+}
+
+
+function try_remove_old_popups()
+{
+	const popupWindow = document.querySelector('#popup_translator_window');
+	if (popupWindow) {
+	  while (popupWindow.firstChild) {
+		popupWindow.removeChild(popupWindow.firstChild);
+	  }
+	  popupWindow.remove();
+	}
+}
+
+function calculatePosition(event, elementWidth, elementHeight) {
+	const viewportWidth = window.innerWidth;
+	const viewportHeight = window.innerHeight;
+  
+	let top = event.clientY + window.pageYOffset;
+	if (top + elementHeight > viewportHeight) {
+	  top = viewportHeight - elementHeight;
+	}
+  
+	let left = event.clientX + window.pageXOffset;
+	if (left + elementWidth > viewportWidth) {
+	  left = viewportWidth - elementWidth;
+	}
+  
+	return { top, left };
+  }  
+
 function translate_selected(dbClickEvent) {
+	try_remove_old_popups();
+
 	var selectedText = window.getSelection().toString().trim();
 
 	if (selectedText !== "") {
@@ -36,20 +72,25 @@ function translate_selected(dbClickEvent) {
 		fetch(popup_url)
 			.then(response => response.text())
 			.then(data => {
-			  console.log(data);
-
 
 			  const popupWindow = document.createElement('div');
 			  popupWindow.innerHTML = data;
 
-			  console.log(popupWindow.querySelectorAll('h4#selected-text-header'));
-
 			  const selectedTextPopupParagraph = popupWindow.querySelectorAll('h4#selected-text-header')
 			  selectedTextPopupParagraph.textContent = selectedText;
 
-
+			  const { top, left } = calculatePosition(dbClickEvent, popupWindow.offsetWidth, popupWindow.offsetHeight);
+			  popupWindow.style.position = 'absolute';
+			  popupWindow.style.top = `${top}px`;
+			  popupWindow.style.left = `${left}px`;
 
 			  document.body.appendChild(popupWindow);
+			  
+			  const closeButton = document.querySelector('#popup-close-button');
+			  if (closeButton) {
+				closeButton.addEventListener('click', close_popup_window);
+			  }
+			  
 			})
 			.catch(error => console.error(error));
 	}
