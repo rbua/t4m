@@ -112,6 +112,24 @@ function set_popup_window_position(dbClickEvent, popupWindow)
 	popupWindow.style.left = `${left}px`;
 }
 
+function add_change_language_handlers()
+{
+	const fromLanguageSelect = document.getElementById("fromLanguageSelect");
+	const toLanguageSelect = document.getElementById("toLanguageSelect");
+	
+	const fromLanguageFlag = document.getElementById("fromLanguageFlag");
+	const toLanguageFlag = document.getElementById("toLanguageFlag");
+
+	fromLanguageSelect.addEventListener("change", function () {
+		const imgPath = `https://raw.githubusercontent.com/rbua/t4m/master/Frontend/static_resources/language_icons/${this.value}.png`;
+		fromLanguageFlag.setAttribute("src", imgPath);
+	});
+
+	toLanguageSelect.addEventListener("change", function () {
+		const imgPath = `https://raw.githubusercontent.com/rbua/t4m/master/Frontend/static_resources/language_icons/${this.value}.png`;
+		toLanguageFlag.setAttribute("src", imgPath);
+	});
+}
 
 function translate_selected(dbClickEvent) {
 	try_remove_old_popups();
@@ -133,6 +151,7 @@ function translate_selected(dbClickEvent) {
 			  document.body.appendChild(popupWindow);
 			  set_popup_window_position(dbClickEvent, popupWindow);
 			  add_close_popup_window_on_button_click_handler();
+			  add_change_language_handlers();
 			})
 			.catch(error => console.error(error));
 	}
@@ -147,26 +166,6 @@ function link_popup_css_to_html()
 	document.head.appendChild(link);
 }
 
-function add_chenge_language_handlers()
-{
-	const fromLanguageSelect = document.getElementById("fromLanguageSelect");
-	const toLanguageSelect = document.getElementById("toLanguageSelect");
-	
-	const fromLanguageFlag = document.getElementById("fromLanguageFlag");
-	const toLanguageFlag = document.getElementById("toLanguageFlag");
-
-	fromLanguageSelect.addEventListener("change", function () {
-		var imgPath = chrome.runtime.getURL(`static_resources/language_icons/${this.value}.png`);
-		fromLanguageFlag.setAttribute("src", `url(${imgPath})`);
-	});
-
-	toLanguageSelect.addEventListener("change", function () {
-		var imgPath = chrome.runtime.getURL(`static_resources/language_icons/${this.value}.png`);
-		toLanguageFlag.setAttribute("src", `url(${imgPath})`);
-	});
-}
-
 link_popup_css_to_html();
 document.addEventListener("dblclick", function(e) { translate_selected(e) });
 add_close_popup_window_on_page_click_handler();
-add_chenge_language_handlers();
