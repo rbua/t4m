@@ -35,6 +35,14 @@
     {
       "resources": ["icons/icon-transparent.png"],
       "matches": ["<all_urls>"]
+    },
+    {
+      "resources": [
+        "static_resources/language_icons/"
+      ],
+      "matches": [
+        "*://*/*"
+      ]
     }
   ]
 }

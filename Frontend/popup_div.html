@@ -1,9 +1,31 @@
 
 
-<div id="popup_translator_window" style="width: 200px; height: 300px; border-radius: 10px; border: 1px solid #ccc; padding: 0 0px;">
-  <div style="background-color: #91919189; height: 30px; border-radius: 9px 9px 0 0; display: flex; align-items: center; justify-content: space-between;">
-    <img class="logo" src="https://raw.githubusercontent.com/rbua/t4m/master/Frontend/icons/icon-transparent.png" alt="logo" style="width: 30px; height: 30px; margin-left: 5px;">
-    <img id="popup-close-button" class="close-button" src="https://raw.githubusercontent.com/rbua/t4m/master/Frontend/icons/close-red-icon.png" alt="close button" style="width: 15px; height: 15px; margin-right: 5px;">
+<div id="popup_translator_window" style="width: 300px; height: 300px; border-radius: 10px; border: 1px solid #ccc; padding: 0 0px;">
+
+  <div style="background-color: #00000060; height: 30px; border-radius: 9px 9px 0 0; display: flex; align-items: center; justify-content: space-between;">
+    <img class="logo" src="https://raw.githubusercontent.com/rbua/t4m/master/Frontend/icons/icon-transparent.png" alt="logo" style="width: 36px; height: 36px; margin-left: 5px; margin-top:5px;">
+    
+    <div class="dropdown">
+      <select id="fromLanguageSelect">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+        <option value="ua">UA</option>
+      </select>
+      <img src="language_icons/de.png" id='fromLanguageFlag' class="flag"></img>
+    </div>
+    <div class="dropdown-arrow"></div>
+    <div class="dropdown2">
+      <select id="toLanguageSelect">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+        <option value="ua">UA</option>
+      </select>
+      <img src="language_icons/de.png" id='toLanguageFlag' class="flag"></img>
+    </div>
+    
+    <img id="popup-close-button" class="close-button" src="https://raw.githubusercontent.com/rbua/t4m/master/Frontend/icons/close-red-icon.png" alt="close button" style="width: 20px; height: 20px; margin-right: 5px;">
   </div>
   <h4 id="selected-text-header">Selected Text</h4>
   <hr>

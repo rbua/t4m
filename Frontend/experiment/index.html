@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dropdown Boxes</title>
+    <style>
+      .dropdown,
+      .dropdown2 {
+        position: relative;
+        display: inline-block;
+        border-radius: 3px;
+        border: 1px solid white;
+      }
+
+      .dropdown select,
+      .dropdown2 select {
+        appearance: none;
+        display: inline-block;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #333;
+        width: 40px;
+        height: 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        background-repeat: no-repeat;
+        background-position: left 5px center;
+        text-align: center;
+      }
+
+      .dropdown select:focus,
+      .dropdown2 select:focus {
+        outline: none;
+      }
+
+      .dropdown select option,
+      .dropdown2 select option {
+        background-color: #333;
+        color: white;
+      }
+
+      .dropdown-arrow {
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 5px solid white;
+        display: inline-block;
+        margin: 10px;
+      }
+
+      .flag {
+        width: 30px;
+        height: 20px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding-top: 7px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dropdown">
+      <select id="fromLanguageSelect">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+        <option value="ua">UA</option>
+      </select>
+      <img src="language_icons/de.png" id='fromLanguageFlag' class="flag"></img>
+    </div>
+    <div class="dropdown-arrow"></div>
+    <div class="dropdown2">
+      <select id="toLanguageSelect">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+        <option value="ua">UA</option>
+      </select>
+      <img src="language_icons/de.png" id='toLanguageFlag' class="flag"></img>
+    </div>
+    <script>
+      const fromLanguageSelect = document.getElementById("fromLanguageSelect");
+      const toLanguageSelect = document.getElementById("toLanguageSelect");
+      
+      const fromLanguageFlag = document.getElementById("fromLanguageFlag");
+      const toLanguageFlag = document.getElementById("toLanguageFlag");
+
+      fromLanguageSelect.addEventListener("change", function () {
+        const imgPath = `language_icons/${this.value}.png`;
+        
+        fromLanguageFlag.setAttribute("src", "url(${imgPath})");
+      });
+
+      toLanguageSelect.addEventListener("change", function () {
+        const imgPath = `language_icons/${this.value}.png`;
+        toLanguageFlag.setAttribute("src", "url(${imgPath})")
+      });
+    </script>
+  </body>
+</html>
